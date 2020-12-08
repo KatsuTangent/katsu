@@ -47,6 +47,12 @@ class ProductController extends Controller
         $pic = readfile($request->picture);
         // dd($pic);
 
+        if($request->stock==0){
+            $status = "out of stock";
+        }else{
+            $status = "Available"
+        }
+
         $Products = new Products();
         $Products->cat_sub_id = $request->cat_sub_id;
         $Products->name = $request->name;
@@ -56,7 +62,7 @@ class ProductController extends Controller
         $Products->weight = $request->weight;
         $Products->sku = $request->sku;
         $Products->picture = $pic;
-        $Products->status = "Available";
+        $Products->status = $status;
         $Products->sales = 0;
         $Products->save();
 
