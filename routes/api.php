@@ -26,6 +26,10 @@ Route::group(['prefix' => 'v1'], function () {
     
     Route::post('Product/create', 'api\v1\ProductController@create');
 
+    Route::post('Product/{id}', 'api\v1\ProductController@update');
+
+    Route::post('Product/all', 'api\v1\ProductController@index');
+
     Route::get('/', function () {
         return response()->json('test !', 200);
     });
